@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="7.2.0.201507292305" AlpVersion="7.2.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="7.2.0.201509101944" AlpVersion="7.2.5">
 <Model>
 	<Id>1427961064211</Id>
 	<Name><![CDATA[Kanban]]></Name>
@@ -380,7 +380,7 @@
 				<Connector>
 					<Id>1427964574632</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>810</X><Y>-90</Y>
+					<X>1020</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -407,13 +407,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>420</X><Y>0</Y></Point>
+						<Point><X>210</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1442923213445</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>440</X><Y>-90</Y>
+					<X>540</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -440,40 +440,7 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-100</X><Y>0</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1442923700736</Id>
-					<Name><![CDATA[connector6]]></Name>
-					<X>320</X><Y>-90</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[ru.scrumtrek.kanban]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[analysisCondition]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Hold]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[ru.scrumtrek.kanban]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[queue]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Queue]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-30</X><Y>0</Y></Point>
+						<Point><X>-150</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -512,7 +479,7 @@
 				<Connector>
 					<Id>1442924340020</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>590</X><Y>-90</Y>
+					<X>800</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -545,7 +512,7 @@
 				<Connector>
 					<Id>1442924340021</Id>
 					<Name><![CDATA[connector8]]></Name>
-					<X>500</X><Y>-90</Y>
+					<X>710</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -572,13 +539,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-20</X><Y>0</Y></Point>
+						<Point><X>-130</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1442924530842</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>770</X><Y>-90</Y>
+					<X>980</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -611,7 +578,7 @@
 				<Connector>
 					<Id>1442924530843</Id>
 					<Name><![CDATA[connector9]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>880</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -637,8 +604,8 @@
 						<ItemName><![CDATA[out]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>670</X><Y>-90</Y></Point>
-						<Point><X>630</X><Y>-90</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-40</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -672,6 +639,39 @@
 					<Points>
 						<Point><X>40</X><Y>-60</Y></Point>
 						<Point><X>80</X><Y>-90</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1443263322769</Id>
+					<Name><![CDATA[connector11]]></Name>
+					<X>370</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ru.scrumtrek.kanban]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[analysisCondition]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Hold]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ru.scrumtrek.kanban]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[queue]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Queue]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-80</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -1370,7 +1370,7 @@ requestsDone.add(time(), requestsDoneVar);]]></Code>
 				<EmbeddedObject>
 					<Id>1427961152378</Id>
 					<Name><![CDATA[analysis]]></Name>
-					<X>440</X><Y>-110</Y>
+					<X>540</X><Y>-110</Y>
 					<Label><X>-5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1540,8 +1540,8 @@ requestsDone.add(time(), requestsDoneVar);]]></Code>
 						<Parameter>
 							<Name><![CDATA[onSeizeUnit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[waitTimeDistr.add(time() - agent.startWaiting);
-agent.resource = (AbstractEngineer) unit;
+								<Code><![CDATA[agent.resource = (AbstractEngineer) unit;
+waitTimeDistr.add(time() - agent.startWaiting);
 queueOccupiedSlots--;
 queueCondition.recalculateConditions();
 if (queueOccupiedSlots <= queueSize.getIntValue())
@@ -1558,6 +1558,10 @@ if (queueOccupiedSlots <= queueSize.getIntValue())
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[requestsAnalyzedVar++;
+requestsAnalyzed.add(time(), requestsAnalyzedVar);]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -1618,8 +1622,8 @@ if (queueOccupiedSlots <= queueSize.getIntValue())
 				<EmbeddedObject>
 					<Id>1427961176298</Id>
 					<Name><![CDATA[development]]></Name>
-					<X>590</X><Y>-110</Y>
-					<Label><X>-5</X><Y>-10</Y></Label>
+					<X>800</X><Y>-110</Y>
+					<Label><X>-15</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -1778,10 +1782,6 @@ if (queueOccupiedSlots <= queueSize.getIntValue())
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[requestsAnalyzedVar++;
-requestsAnalyzed.add(time(), requestsAnalyzedVar);]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -1809,6 +1809,10 @@ if (analysisOccupiedSlots <= analysisLimit.getIntValue())
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[requestsDevelopedVar++;
+requestsDeveloped.add(time(), requestsDevelopedVar);]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -1869,8 +1873,8 @@ if (analysisOccupiedSlots <= analysisLimit.getIntValue())
 				<EmbeddedObject>
 					<Id>1427961190186</Id>
 					<Name><![CDATA[test]]></Name>
-					<X>770</X><Y>-110</Y>
-					<Label><X>-5</X><Y>-10</Y></Label>
+					<X>980</X><Y>-110</Y>
+					<Label><X>5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -2029,10 +2033,6 @@ if (analysisOccupiedSlots <= analysisLimit.getIntValue())
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[requestsDevelopedVar++;
-requestsDeveloped.add(time(), requestsDevelopedVar);]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -2790,6 +2790,9 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[2]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[capacityBasedOnAttractors]]></Name>
@@ -3290,8 +3293,8 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 				<EmbeddedObject>
 					<Id>1442923209112</Id>
 					<Name><![CDATA[analysisCondition]]></Name>
-					<X>320</X><Y>-100</Y>
-					<Label><X>-5</X><Y>-20</Y></Label>
+					<X>370</X><Y>-100</Y>
+					<Label><X>-25</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3502,8 +3505,8 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 				<EmbeddedObject>
 					<Id>1442924336722</Id>
 					<Name><![CDATA[devCondition]]></Name>
-					<X>500</X><Y>-100</Y>
-					<Label><X>-5</X><Y>-20</Y></Label>
+					<X>710</X><Y>-100</Y>
+					<Label><X>-25</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3590,7 +3593,7 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 				<EmbeddedObject>
 					<Id>1442924527465</Id>
 					<Name><![CDATA[testCondition]]></Name>
-					<X>670</X><Y>-100</Y>
+					<X>880</X><Y>-100</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3744,13 +3747,13 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 								<EntityEmbeddedObject>
 									<ActiveObjectClass>
 										<PackageName><![CDATA[ru.scrumtrek.kanban]]></PackageName>
-										<ClassName><![CDATA[BasicRequest]]></ClassName>
+										<ClassName><![CDATA[Bug]]></ClassName>
 									</ActiveObjectClass>
 									<GenericParameterSubstitute>
 										<GenericParameterSubstituteReference>
 											<PackageName><![CDATA[ru.scrumtrek.kanban]]></PackageName>
-											<ClassName><![CDATA[BasicRequest]]></ClassName>
-											<ItemName><![CDATA[1443184672919]]></ItemName>
+											<ClassName><![CDATA[Bug]]></ClassName>
+											<ItemName><![CDATA[1443184871272]]></ItemName>
 										</GenericParameterSubstituteReference>
 									</GenericParameterSubstitute>
 									<Parameters>
