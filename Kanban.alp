@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="7.2.0.201509101944" AlpVersion="7.2.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="7.2.0.201507292305" AlpVersion="7.2.5">
 <Model>
 	<Id>1427961064211</Id>
 	<Name><![CDATA[Kanban]]></Name>
@@ -110,7 +110,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[1.5]]></Code>
+							<Code><![CDATA[3]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -840,7 +840,7 @@ passedRequests = sink.count();]]></Action>
     			<HistogramData>
 					<Id>1427967825719</Id>
 					<Name><![CDATA[leadTimeDistr]]></Name>
-					<X>760</X><Y>-160</Y>
+					<X>760</X><Y>-170</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -954,12 +954,12 @@ passedRequests = sink.count();]]></Action>
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<FreezeXAxis>false</FreezeXAxis>
-					<SamplesToKeep>100</SamplesToKeep>
+					<SamplesToKeep>1000</SamplesToKeep>
 				</DataSet>
     			<DataSet>
 					<Id>1429093375600</Id>
 					<Name><![CDATA[leadTimeDataSet]]></Name>
-					<X>760</X><Y>-220</Y>
+					<X>760</X><Y>-240</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1000,6 +1000,59 @@ passedRequests = sink.count();]]></Action>
 					<FreezeXAxis>false</FreezeXAxis>
 					<SamplesToKeep>1000</SamplesToKeep>
 				</DataSet>
+    			<DataSet>
+					<Id>1443442790573</Id>
+					<Name><![CDATA[cycleTimeDataSet]]></Name>
+					<X>760</X><Y>-220</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1429171200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<FreezeXAxis>false</FreezeXAxis>
+					<SamplesToKeep>1000</SamplesToKeep>
+				</DataSet>
+    			<HistogramData>
+					<Id>1443443197201</Id>
+					<Name><![CDATA[cycleTimeDistr]]></Name>
+					<X>760</X><Y>-150</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1428048000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<Value><![CDATA[]]></Value>
+					<NumberOfIntervals>50</NumberOfIntervals>
+					<MinMaxAutodetect>true</MinMaxAutodetect>
+					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
+					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
+					<InitialIntervalSize><![CDATA[0.01]]></InitialIntervalSize>
+					<CalculateCDF>true</CalculateCDF>
+					<CalculatePercentiles>false</CalculatePercentiles>
+					<LowPercent>10</LowPercent>
+					<HighPercent>10</HighPercent>
+					<Title><![CDATA[]]></Title>
+				</HistogramData>
 			</AnalysisData>
 			<AgentLinks>
 				<AgentLink>
@@ -1120,6 +1173,9 @@ passedRequests = sink.count();]]></Action>
 										</Parameter>
 										<Parameter>
 											<Name><![CDATA[testWorkCapacity]]></Name>
+										</Parameter>
+										<Parameter>
+											<Name><![CDATA[startProcessingTime]]></Name>
 										</Parameter>
 									</Parameters>
 									<ReplicationFlag>true</ReplicationFlag>
@@ -1315,8 +1371,10 @@ requestsCame.add(time(), requestsCameVar);]]></Code>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[leadTimeDistr.add(time()-agent.enteredSystem);
+cycleTimeDistr.add(time()-agent.startProcessingTime);
 requestsDoneVar++;
 leadTimeDataSet.add(requestsDoneVar,time()-agent.enteredSystem);
+cycleTimeDataSet.add(requestsDoneVar,time()-agent.startProcessingTime);
 requestsDone.add(time(), requestsDoneVar);]]></Code>
 							</Value>
 						</Parameter>
@@ -1541,6 +1599,7 @@ requestsDone.add(time(), requestsDoneVar);]]></Code>
 							<Name><![CDATA[onSeizeUnit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.resource = (AbstractEngineer) unit;
+agent.startProcessingTime = time();
 waitTimeDistr.add(time() - agent.startWaiting);
 queueOccupiedSlots--;
 queueCondition.recalculateConditions();
@@ -2129,7 +2188,7 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 					<Id>1427961407792</Id>
 					<Name><![CDATA[analysts]]></Name>
 					<X>160</X><Y>-30</Y>
-					<Label><X>-25</X><Y>-15</Y></Label>
+					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -2448,7 +2507,7 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 					<Id>1427961778940</Id>
 					<Name><![CDATA[developers]]></Name>
 					<X>260</X><Y>-30</Y>
-					<Label><X>-25</X><Y>-15</Y></Label>
+					<Label><X>-10</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -2766,7 +2825,7 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 					<Id>1427961872115</Id>
 					<Name><![CDATA[testers]]></Name>
 					<X>370</X><Y>-30</Y>
-					<Label><X>-25</X><Y>-15</Y></Label>
+					<Label><X>0</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3774,6 +3833,9 @@ if (testingOccupiedSlots <= testingWIP.getIntValue())
 										</Parameter>
 										<Parameter>
 											<Name><![CDATA[testWorkCapacity]]></Name>
+										</Parameter>
+										<Parameter>
+											<Name><![CDATA[startProcessingTime]]></Name>
 										</Parameter>
 									</Parameters>
 									<ReplicationFlag>true</ReplicationFlag>
@@ -7828,7 +7890,7 @@ requestsCame.add(time(), requestsCameVar);]]></Code>
 
 			<Shapes>
 				<Attractor>
-					<Id>1443174299442</Id>
+					<Id>1443446620579</Id>
 					<Name><![CDATA[attractor199]]></Name>
 					<X>15</X><Y>28.571428571428573</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -7840,7 +7902,7 @@ requestsCame.add(time(), requestsCameVar);]]></Code>
 					<Rotation>0.0</Rotation>	
 				</Attractor>
 				<Attractor>
-					<Id>1443174299443</Id>
+					<Id>1443446620580</Id>
 					<Name><![CDATA[attractor200]]></Name>
 					<X>15</X><Y>57.142857142857146</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -7852,7 +7914,7 @@ requestsCame.add(time(), requestsCameVar);]]></Code>
 					<Rotation>0.0</Rotation>	
 				</Attractor>
 				<Attractor>
-					<Id>1443174299444</Id>
+					<Id>1443446620581</Id>
 					<Name><![CDATA[attractor201]]></Name>
 					<X>15</X><Y>85.71428571428572</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -7864,7 +7926,7 @@ requestsCame.add(time(), requestsCameVar);]]></Code>
 					<Rotation>0.0</Rotation>	
 				</Attractor>
 				<Attractor>
-					<Id>1443174299445</Id>
+					<Id>1443446620582</Id>
 					<Name><![CDATA[attractor202]]></Name>
 					<X>15</X><Y>114.28571428571429</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -7876,7 +7938,7 @@ requestsCame.add(time(), requestsCameVar);]]></Code>
 					<Rotation>0.0</Rotation>	
 				</Attractor>
 				<Attractor>
-					<Id>1443174299446</Id>
+					<Id>1443446620583</Id>
 					<Name><![CDATA[attractor203]]></Name>
 					<X>15</X><Y>142.85714285714286</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -7888,7 +7950,7 @@ requestsCame.add(time(), requestsCameVar);]]></Code>
 					<Rotation>0.0</Rotation>	
 				</Attractor>
 				<Attractor>
-					<Id>1443174299447</Id>
+					<Id>1443446620584</Id>
 					<Name><![CDATA[attractor204]]></Name>
 					<X>15</X><Y>171.42857142857144</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -7906,28 +7968,6 @@ requestsCame.add(time(), requestsCameVar);]]></Code>
 					<Height>200</Height>
 					<Rotation>0.0</Rotation>
 				</RectangleNode>
-				<Text>
-					<Id>1443185696874</Id>
-					<Name><![CDATA[bugsSourceRateTitle]]></Name>
-					<X>780</X><Y>70</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Интенсивность поступления дефектов]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>11</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 			</Shapes>
 			<Controls>
 				<Control Type="EditBox">
@@ -8045,7 +8085,7 @@ else
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="1"/>
-						<DefaultValueCode><![CDATA["4"]]></DefaultValueCode>
+						<DefaultValueCode><![CDATA["7"]]></DefaultValueCode>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
 				</Control>
@@ -8075,7 +8115,7 @@ else
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="1"/>
-						<DefaultValueCode><![CDATA["6"]]></DefaultValueCode>
+						<DefaultValueCode><![CDATA["2"]]></DefaultValueCode>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
 				</Control>
@@ -8148,37 +8188,12 @@ else
 						<Link>developmentInterchangeability</Link>
 	 				</ExtendedProperties>
 				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1443185696877</Id>
-					<Name><![CDATA[bugsSourceRate]]></Name>
-					<X>780</X><Y>90</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<DefaultValueCode><![CDATA["1.5"]]></DefaultValueCode>
-						<MinValue><![CDATA[0]]></MinValue>
-						<MaxValue><![CDATA[100]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>bugFrequency</Link>
-					</ExtendedProperties>
-				</Control>
 			</Controls>
 			<Charts>
     			<Histogram>
 					<Id>1427968188324</Id>
 					<Name><![CDATA[waitTimeDistrChart]]></Name>
-					<X>0</X><Y>420</Y>
+					<X>-280</X><Y>400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8240,8 +8255,8 @@ else
     			</Histogram>
     			<Histogram>
 					<Id>1427968289858</Id>
-					<Name><![CDATA[leadTimeDistrChart]]></Name>
-					<X>260</X><Y>420</Y>
+					<Name><![CDATA[cycleTimeDistrChart]]></Name>
+					<X>10</X><Y>420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8258,14 +8273,14 @@ else
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>240</Width>
+					<Width>290</Width>
 					<Height>180</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>30</XOffset>
 						<YOffset>10</YOffset>
-						<Width>200</Width>
+						<Width>250</Width>
 						<Height>130</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -8291,14 +8306,14 @@ else
 						<RelativeWidth>0.8</RelativeWidth>
 					</Bars>
 					<HistogramDataExpression>
-					<Expression><![CDATA[leadTimeDistr]]></Expression>
+					<Expression><![CDATA[cycleTimeDistr]]></Expression>
 						<ColorPDF>-2354116</ColorPDF>
 						<ColorCDF>-12004916</ColorCDF>
 						<ColorLowPercent>-14774017</ColorLowPercent>
 						<ColorHighPercent>-9728477</ColorHighPercent>
 						<ColorMean>-9404272</ColorMean>
 						<LineWidth>1</LineWidth>						
-						<Title><![CDATA[Lead Time Histogram]]></Title>							
+						<Title><![CDATA[Cycle Time Histogram]]></Title>							
 					</HistogramDataExpression>
     			</Histogram>
     			<Plot>
@@ -8399,7 +8414,7 @@ else
     			<Plot>
 					<Id>1429093722821</Id>
 					<Name><![CDATA[controlChart]]></Name>
-					<X>510</X><Y>420</Y>
+					<X>360</X><Y>420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8416,14 +8431,14 @@ else
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>230</Width>
+					<Width>340</Width>
 					<Height>180</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>30</XOffset>
 						<YOffset>10</YOffset>
-						<Width>200</Width>
+						<Width>290</Width>
 						<Height>130</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -8435,7 +8450,7 @@ else
 						<Size>20</Size>
 					</Legend>
 					<Labels>
-						<HorLabelsPosition>NONE</HorLabelsPosition>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
 						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
 						<TextColor>-12566464</TextColor>
 					</Labels>
@@ -8447,8 +8462,8 @@ else
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[Control Chart]]></Title>
-					<Expression><![CDATA[leadTimeDataSet]]></Expression>
+						<Title><![CDATA[Cycle Time Control Chart]]></Title>
+					<Expression><![CDATA[cycleTimeDataSet]]></Expression>
 					<Color>-16728065</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
@@ -8464,7 +8479,7 @@ else
     			<Plot>
 					<Id>1430919992410</Id>
 					<Name><![CDATA[channelCapacityPlot]]></Name>
-					<X>750</X><Y>430</Y>
+					<X>740</X><Y>430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9668,6 +9683,28 @@ else
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1443442874891</Id>
+					<Name><![CDATA[startProcessingTime]]></Name>
+					<X>260</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<NumericType><![CDATA[double]]></NumericType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1443442874889</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<AgentLinks>
 				<AgentLink>
@@ -9723,6 +9760,9 @@ else
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[testWorkCapacity]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[startProcessingTime]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -9880,6 +9920,9 @@ else
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[testWorkCapacity]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[startProcessingTime]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
